@@ -14,13 +14,6 @@ ApplicationWindow {
         currentIndex: tabBar.currentIndex
 
         Page1Form {
-            Button{
-
-            }
-        }
-
-        Page2Form {
-
             GridLayout{
                 anchors.fill: parent
                 columns: 4
@@ -34,7 +27,7 @@ ApplicationWindow {
                 Label{
                     text: "MoscowPolytechPlayer"
                     Layout.column: 1
-                    Layout.columnSpan: 4
+                    Layout.columnSpan: 3
                     Layout.fillWidth: true
                     Layout.row: 0
                     font.family: "Arial"
@@ -42,14 +35,15 @@ ApplicationWindow {
                 }
 
                 TextField{
-                    text: "Never gonna give you up"
+                    text: "Never gonna give you up blabla"
                     Layout.column: 1
-                    Layout.columnSpan: 2
+                    Layout.columnSpan: 3
+                    Layout.fillWidth: true
                     Layout.row: 1
                 }
 
                 ProgressBar{
-                    value: 0.5
+                    value: 0.25
                     Layout.row: 2
                     Layout.column: 0
                     Layout.columnSpan: 4
@@ -77,19 +71,21 @@ ApplicationWindow {
                 Slider{
                     Layout.row: 4
                     Layout.column: 0
+                    Layout.columnSpan: 2
                 }
 
                 Switch{
                     Layout.row: 4
                     Layout.column: 4
+                    Layout.fillWidth: true
                 }
-
-
-
-
             }
+        }
+        Page2Form {
 
         }
+
+
     }
 
     footer: TabBar {
