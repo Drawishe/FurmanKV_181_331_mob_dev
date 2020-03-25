@@ -157,8 +157,31 @@ ApplicationWindow {
 
         Page{
 
+
         }
 
+        Page{
+
+        }
+
+
+    }
+    Drawer {
+        //anchors.fill:parent
+        width:0.66 * parent.width
+        height: parent.height
+        GridLayout {
+            anchors.fill: parent
+            columns: 1
+            Button{}
+            Button{}
+            Button{}
+            Switch {
+                onScaleChanged: {
+                    text = "green";
+                }
+            }
+        }
 
     }
 
@@ -167,10 +190,13 @@ ApplicationWindow {
         currentIndex: swipeView.currentIndex
 
         TabButton {
-            text: qsTr("Page 1")
+            text: qsTr("Lab1")
         }
         TabButton {
-            text: qsTr("Page 2")
+            text: qsTr("Lab2")
+        }
+        TabButton {
+            text: qsTr("Lab3")
         }
     }
 }
