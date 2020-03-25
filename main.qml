@@ -165,7 +165,7 @@ ApplicationWindow {
 
         Page{
             header: {
-                    text: qsTr("The Third Lab")
+                text: qsTr("The Third Lab")
 
             }
             GridLayout {
@@ -173,21 +173,22 @@ ApplicationWindow {
                 anchors.fill: parent
                 columns: 4 //колонка
 
-            //Desaturate, RecursiveBlur, GaussianBlur
+                //Desaturate, RecursiveBlur, GaussianBlur
                 RowLayout{
                     Layout.fillWidth: true
-                    Layout.columnSpan: 4
+
                     Layout.row: 0
                     Layout.column: 0
+                    Layout.columnSpan: 4
 
                     Item{
-                    Layout.fillWidth: true
+                        Layout.fillWidth: true
 
                     }
                     Item{
 
-                        width: 100; height: 100
-                        Layout.fillWidth: true
+                        width: 300; height: 300
+
 
 
                         Image {
@@ -195,6 +196,8 @@ ApplicationWindow {
                             source: "rick.png"
                             sourceSize: Qt.size(parent.width, parent.height)
                             fillMode: Image.PreserveAspectFit
+                            smooth: true
+                            visible: false
 
 
                         }
@@ -204,22 +207,26 @@ ApplicationWindow {
                             desaturation: slideDesaturation.value
 
                         }
+
                         RecursiveBlur{
                             anchors.fill: rick
                             source: rick
-                            radius:  slideRecBlur.value
-                            loops: slideRecLoops.value
+                            radius:  slideRadius.value
+                            loops: slideRec.value
                         }
-                        GaussianBlur{
-                            anchors.fill: rick
-                            source: rick
-                            radius: slideGausBlur.value
-                            samples:slideGausBlurSamp.value
-                        }
+
+//                        GaussianBlur{
+//                            anchors.fill: rick
+//                            source: rick
+//                            radius: slideRadius.value
+//                            samples:slideGaus.value
+//                        }
+
+
                     }
 
                     Item{
-                    Layout.fillWidth: true
+                        Layout.fillWidth: true
 
                     }
 
@@ -227,11 +234,15 @@ ApplicationWindow {
                 RowLayout{
                     Layout.fillWidth: true
                     Layout.columnSpan: 4
-                    Layout.row: 0
+                    Layout.row: 1
                     Layout.column: 0
 
                     Item{
-                    Layout.fillWidth: true
+                        Layout.fillWidth: true
+
+                    }
+                    Label{
+                        text: "Desaturation"
 
                     }
                     Slider{
@@ -240,47 +251,96 @@ ApplicationWindow {
                         from: 0
                         value: 0
                         to:1
-                        // @disable-check M16
-                        //text: qsTr("Desaturate")
 
+                    }
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 2
+                    Layout.column: 0
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                    Label{
+                        text: "Blur Radius"
                     }
 
                     Slider {
-                        id: slideRecBlur
+                        id: slideRadius
                         from: 0
                         value: 0
                         to:16
                     }
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 3
+                    Layout.column: 0
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+
+                    Label{
+                        text: "Recursive Blur"
+                    }
                     Slider{
-                        id: slideRecLoops
+                        id: slideRec
                         from: 1
                         value: 0
                         to:100
                     }
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 4
+                    Layout.column: 0
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+
+                    Label{
+                        text: "Gauss Blur"
+                    }
+
 
 
                     Slider{
-                        id:slideGausBlur
-                        from: 0
+                        id:slideGaus
+                        from: 1
                         value: 0
                         to:16
-                    }
-                    Slider{
-                        id:slideGausBlurSamp
-                        from: 0
-                        value: 0
-                        to:100
                     }
 
 
 
                     Item{
-                    Layout.fillWidth: true
+                        Layout.fillWidth: true
 
                     }
 
 
                 }
+
+
 
 
             }
