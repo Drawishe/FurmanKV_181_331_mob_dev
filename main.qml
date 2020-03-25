@@ -13,75 +13,149 @@ ApplicationWindow {
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        Page1Form {
+        Page{
             GridLayout{
                 anchors.fill: parent
                 columns: 4
 
-                BusyIndicator{
-                    id: bsi
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 0
                     Layout.column: 0
-                    Layout.row: 0
+
+                    Item{
+                    Layout.fillWidth: true
+
+                    }
+
+                    BusyIndicator{
+                        id: bsi
+
+                    }
+
+                    Label{
+                        text: "MoscowPolytechPlayer"
+
+
+                        font.family: "Arial"
+                        font.pixelSize: 30
+                    }
+
+                    Item{
+                    Layout.fillWidth: true
+                    }
                 }
 
-                Label{
-                    text: "MoscowPolytechPlayer"
-                    Layout.column: 1
-                    Layout.columnSpan: 3
+                RowLayout{
                     Layout.fillWidth: true
-                    Layout.row: 0
-                    font.family: "Arial"
-                    font.pixelSize: 30
-                }
-
-                TextField{
-                    text: "Never gonna give you up blabla"
-                    Layout.column: 1
-                    Layout.columnSpan: 3
-                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
                     Layout.row: 1
+                    Layout.column: 0
+
+                    Item{
+                    Layout.fillWidth: true
+                    }
+
+                    TextField{
+                        text: "Never gonna give you up blabla"
+    //                    Layout.column: 1
+    //                    Layout.columnSpan: 3
+                        Layout.fillWidth: true
+    //                    Layout.row: 1
+                    }
+
+                    Item{
+                    Layout.fillWidth: true
+                    }
                 }
 
-                ProgressBar{
-                    value: 0.25
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
                     Layout.row: 2
                     Layout.column: 0
-                    Layout.columnSpan: 4
+
+                    ProgressBar{
+                        value: 0.25
+    //                    Layout.row: 2
+    //                    Layout.column: 0
+    //                    Layout.columnSpan: 4
+                        Layout.fillWidth: true
+                    }
+                }
+
+                RowLayout{
                     Layout.fillWidth: true
-                }
-
-                Button{
-                    id:btn1
+                    Layout.columnSpan: 4
                     Layout.row: 3
-                    Layout.column: 1
+                    Layout.column: 0
+
+                    Item{
+                    Layout.fillWidth: true
+                    }
+
+                    Button{
+                        id:btn1
+    //                    Layout.row: 3
+    //                    Layout.column: 1
+                    }
+
+
+                    Button{
+                        id:btn2
+    //                    Layout.row: 3
+    //                    Layout.column: 2
+                    }
+
+                    Button{
+                        id:btn3
+    //                    Layout.row: 3
+    //                    Layout.column: 3
+                    }
+
+                    Item{
+                    Layout.fillWidth: true
+                    }
                 }
 
-                Button{
-                    id:btn2
-                    Layout.row: 3
-                    Layout.column: 2
-                }
-
-                Button{
-                    id:btn3
-                    Layout.row: 3
-                    Layout.column: 3
-                }
-
-                Slider{
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
                     Layout.row: 4
                     Layout.column: 0
-                    Layout.columnSpan: 2
+
+                    Item{
+                    Layout.fillWidth: true
+                    }
+
+                    Slider{
+    //                    Layout.row: 4
+    //                    Layout.column: 0
+    //                    Layout.columnSpan: 2
+                    }
+
+                    Item{
+                    Layout.fillWidth: true
+                    }
+
+                    Switch{
+    //                    Layout.row: 4
+    //                    Layout.column: 4
+    //                    Layout.fillWidth: true
+                    }
+
+                    Item{
+                    Layout.fillWidth: true
+                    }
+
                 }
 
-                Switch{
-                    Layout.row: 4
-                    Layout.column: 4
-                    Layout.fillWidth: true
-                }
             }
+
         }
-        Page2Form {
+
+        Page{
 
         }
 
