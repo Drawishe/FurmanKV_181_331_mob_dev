@@ -1,6 +1,8 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.12
+import QtQuick.Controls.Material 2.0
+import QtGraphicalEffects 1.14
 
 ApplicationWindow {
     visible: true
@@ -158,10 +160,130 @@ ApplicationWindow {
         Page{
 
 
+
         }
 
         Page{
+            header: {
+                    text: qsTr("The Third Lab")
 
+            }
+            GridLayout {
+
+                anchors.fill: parent
+                columns: 4 //колонка
+
+            //Desaturate, RecursiveBlur, GaussianBlur
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 0
+                    Layout.column: 0
+
+                    Item{
+                    Layout.fillWidth: true
+
+                    }
+                    Item{
+
+                        width: 100; height: 100
+                        Layout.fillWidth: true
+
+
+                        Image {
+                            id: rick
+                            source: "rick.png"
+                            sourceSize: Qt.size(parent.width, parent.height)
+                            fillMode: Image.PreserveAspectFit
+
+
+                        }
+                        Desaturate{
+                            anchors.fill: rick
+                            source: rick
+                            desaturation: slideDesaturation.value
+
+                        }
+                        RecursiveBlur{
+                            anchors.fill: rick
+                            source: rick
+                            radius:  slideRecBlur.value
+                            loops: slideRecLoops.value
+                        }
+                        GaussianBlur{
+                            anchors.fill: rick
+                            source: rick
+                            radius: slideGausBlur.value
+                            samples:slideGausBlurSamp.value
+                        }
+                    }
+
+                    Item{
+                    Layout.fillWidth: true
+
+                    }
+
+                }
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 0
+                    Layout.column: 0
+
+                    Item{
+                    Layout.fillWidth: true
+
+                    }
+                    Slider{
+
+                        id:slideDesaturation
+                        from: 0
+                        value: 0
+                        to:1
+                        // @disable-check M16
+                        //text: qsTr("Desaturate")
+
+                    }
+
+                    Slider {
+                        id: slideRecBlur
+                        from: 0
+                        value: 0
+                        to:16
+                    }
+                    Slider{
+                        id: slideRecLoops
+                        from: 1
+                        value: 0
+                        to:100
+                    }
+
+
+                    Slider{
+                        id:slideGausBlur
+                        from: 0
+                        value: 0
+                        to:16
+                    }
+                    Slider{
+                        id:slideGausBlurSamp
+                        from: 0
+                        value: 0
+                        to:100
+                    }
+
+
+
+                    Item{
+                    Layout.fillWidth: true
+
+                    }
+
+
+                }
+
+
+            }
         }
 
 
