@@ -181,6 +181,7 @@ ApplicationWindow {
                 anchors.fill: parent
                 columns: 4 //колонка
 
+                // Задание - реализовать 
                 //Desaturate, RecursiveBlur, GaussianBlur
                 RowLayout{
                     Layout.fillWidth: true
