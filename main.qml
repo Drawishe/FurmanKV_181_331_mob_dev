@@ -181,16 +181,21 @@ ApplicationWindow {
                     Rectangle{
                         width: 320
                         height: 240
-                        MediaPlayer{
-                            id: mdplayer
-                            source: ""
-                            autoplay: false
-                        }
+//                        MediaPlayer{
+//                            id: mdplayer
+//                            source: ""
+//                            autoplay: false
+//                        }
                         VideoOutput {
                             id: videoOutput
                             source: mdplayer
                             anchors.fill: parent
                         }
+                    }
+
+                    Item{
+                    Layout.fillWidth: true
+
                     }
                 }
 
