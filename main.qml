@@ -167,10 +167,15 @@ ApplicationWindow {
 
         //Lab3
         Page{
-            header: {
-                text: qsTr("The Third Lab")
+            header:
+                Button{
+                    text: "="
+                    Label{
+                        text: "My photo filter app"
+                    }
 
-            }
+                }
+
             GridLayout {
 
                 anchors.fill: parent
@@ -365,46 +370,46 @@ ApplicationWindow {
 
 
         }
-        //lab6
-        Page{
+//        //lab6
+//        Page{
 
 
 
 
 
-        }
-        //lab7
-        Page{
+//        }
+//        //lab7
+//        Page{
 
 
 
 
 
-        }
-        //lab8
-        Page{
+//        }
+//        //lab8
+//        Page{
 
 
 
 
 
-        }
-        //lab9
-        Page{
+//        }
+//        //lab9
+//        Page{
 
 
 
 
 
-        }
-        //lab10
-        Page{
+//        }
+//        //lab10
+//        Page{
 
 
 
 
 
-        }
+//        }
     }
     Drawer {
         //anchors.fill:parent
@@ -444,20 +449,20 @@ ApplicationWindow {
         TabButton {
             text: qsTr("Lab5")
         }
-        TabButton {
-            text: qsTr("Lab6")
-        }
-        TabButton {
-            text: qsTr("Lab7")
-        }
-        TabButton {
-            text: qsTr("Lab8")
-        }
-        TabButton {
-            text: qsTr("Lab9")
-        }
-        TabButton {
-            text: qsTr("Lab10")
-        }
+//        TabButton {
+//            text: qsTr("Lab6")
+//        }
+//        TabButton {
+//            text: qsTr("Lab7")
+//        }
+//        TabButton {
+//            text: qsTr("Lab8")
+//        }
+//        TabButton {
+//            text: qsTr("Lab9")
+//        }
+//        TabButton {
+//            text: qsTr("Lab10")
+//        }
     }
 }
