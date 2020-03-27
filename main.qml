@@ -162,6 +162,13 @@ ApplicationWindow {
         //Lab2
         Page{
             header:
+                RadioButton{
+//                onCheckedChanged:{
+//                }
+
+
+            }
+
 
             GridLayout{
                 anchors.fill: parent
@@ -181,15 +188,24 @@ ApplicationWindow {
                     Rectangle{
                         width: 320
                         height: 240
-//                        MediaPlayer{
-//                            id: mdplayer
-//                            source: ""
+                        MediaPlayer{
+                            id: mdplayer
+                            source: "astley.mp4"
+                            volume: vol.value
 //                            autoplay: false
-//                        }
+                        }
                         VideoOutput {
                             id: videoOutput
                             source: mdplayer
                             anchors.fill: parent
+                        }
+                        MouseArea{
+                        id: playArea
+                        anchors.fill: parent
+
+                        onPressed: mdplayer.play();
+
+
                         }
                     }
 
@@ -229,15 +245,17 @@ ApplicationWindow {
 
                         id: vol
                         from: 0
-                        value: 50
-                        to:100
+                        value: 0.5
+                        to:1
 
                     }
 
                     Button{
+                        onClicked: mdplayer.play();
+                        onClipChanged: mdplayer.pause();
 
                     }
-                                           
+
                     Item{
                     Layout.fillWidth: true
 
