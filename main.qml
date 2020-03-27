@@ -162,12 +162,32 @@ ApplicationWindow {
         //Lab2
         Page{
             header:
-                RadioButton{
-//                onCheckedChanged:{
-//                }
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 0
+                    Layout.column: 0
 
+                    Item{
+                        Layout.fillWidth: true
 
-            }
+                    }
+                    RadioButton{
+                        id: video
+                        checked: true
+                        text: qsTr("Video")
+                    }
+
+                    RadioButton{
+                        id: cam
+                        text: qsTr("Camera")
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
 
 
             GridLayout{
@@ -181,36 +201,33 @@ ApplicationWindow {
                     Layout.column: 0
 
                     Item{
-                    Layout.fillWidth: true
+                        Layout.fillWidth: true
 
                     }
 
-                    Rectangle{
-                        width: 320
-                        height: 240
-                        MediaPlayer{
-                            id: mdplayer
-                            source: "astley.mp4"
-                            volume: vol.value
-//                            autoplay: false
+
+                    MediaPlayer{
+                        id: mdplayer
+                        source: "astley.mp4"
+                        volume: vol.value
+                        onPositionChanged: {
+                            timeline.sync = true
+                            timeline.value = mdplayer.position
+                            timeline.sync = false
                         }
-                        VideoOutput {
-                            id: videoOutput
-                            source: mdplayer
-                            anchors.fill: parent
-                        }
-                        MouseArea{
-                        id: playArea
+
+
+                    }
+                    VideoOutput {
+                        id: videoOutput
+                        source: mdplayer
                         anchors.fill: parent
-
-                        onPressed: mdplayer.play();
-
-
-                        }
+                        visible: {if(video.checked){true}else{false}}
                     }
+
 
                     Item{
-                    Layout.fillWidth: true
+                        Layout.fillWidth: true
 
                     }
                 }
@@ -221,13 +238,18 @@ ApplicationWindow {
                     Layout.row: 1
                     Layout.column: 0
 
-                    ProgressBar{
-                        value: 0.25
-    //                    Layout.row: 2
-    //                    Layout.column: 0
-    //                    Layout.columnSpan: 4
+                    Slider{
+                        id: timeline
+                        to: mdplayer.duration
+                        property bool sync: false
+                        onValueChanged: {if(!sync){mdplayer.seek(value)}}
+                        visible: {if(video.checked){true}else{false}}
                         Layout.fillWidth: true
+
+
+
                     }
+
                 }
 
                 RowLayout{
@@ -235,9 +257,10 @@ ApplicationWindow {
                     Layout.columnSpan: 4
                     Layout.row: 2
                     Layout.column: 0
+                    visible: {if(video.checked){true}else{false}}
 
                     Item{
-                    Layout.fillWidth: true
+                        Layout.fillWidth: true
 
                     }
 
@@ -251,13 +274,17 @@ ApplicationWindow {
                     }
 
                     Button{
-                        onClicked: mdplayer.play();
-                        onClipChanged: mdplayer.pause();
 
+                        onClicked: mdplayer.play();
+
+
+                    }
+                    Button{
+                        onClicked: mdplayer.pause();
                     }
 
                     Item{
-                    Layout.fillWidth: true
+                        Layout.fillWidth: true
 
                     }
 
