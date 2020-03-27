@@ -10,7 +10,7 @@ ApplicationWindow {
     visible: true
     width: 480
     height: 640
-    title: qsTr("Tabs")
+    title: qsTr("FurmanKV_181-331_MobDev")
 
     SwipeView {
         id: swipeView
@@ -170,14 +170,16 @@ ApplicationWindow {
 
                     Item{
                         Layout.fillWidth: true
-
                     }
+
+                    //Кнопка включения окна воспроизведения видео
                     RadioButton{
                         id: video
                         checked: true
                         text: qsTr("Video")
                     }
 
+                    //Кнопка включения окна видеокамеры
                     RadioButton{
                         id: cam
                         text: qsTr("Camera")
@@ -185,11 +187,10 @@ ApplicationWindow {
 
                     Item{
                         Layout.fillWidth: true
-
                     }
                 }
 
-
+            //Воспроизведение Видео
             GridLayout{
                 anchors.fill: parent
                 columns: 4
@@ -197,12 +198,12 @@ ApplicationWindow {
                 RowLayout{
                     Layout.fillWidth: true
                     Layout.columnSpan: 4
-                    Layout.row: 0
+                    Layout.row: 1
                     Layout.column: 0
+                    visible: {if(video.checked){true}else{false}}
 
                     Item{
                         Layout.fillWidth: true
-
                     }
 
 
@@ -221,35 +222,12 @@ ApplicationWindow {
                     VideoOutput {
                         id: videoOutput
                         source: mdplayer
-                        anchors.fill: parent
-                        visible: {if(video.checked){true}else{false}}
                     }
 
 
                     Item{
                         Layout.fillWidth: true
-
                     }
-                }
-
-                RowLayout{
-                    Layout.fillWidth: true
-                    Layout.columnSpan: 4
-                    Layout.row: 1
-                    Layout.column: 0
-
-                    Slider{
-                        id: timeline
-                        to: mdplayer.duration
-                        property bool sync: false
-                        onValueChanged: {if(!sync){mdplayer.seek(value)}}
-                        visible: {if(video.checked){true}else{false}}
-                        Layout.fillWidth: true
-
-
-
-                    }
-
                 }
 
                 RowLayout{
@@ -259,36 +237,98 @@ ApplicationWindow {
                     Layout.column: 0
                     visible: {if(video.checked){true}else{false}}
 
+                    //Таймлайн видео
+                    Slider{
+                        id: timeline
+                        to: mdplayer.duration
+                        property bool sync: false
+                        onValueChanged: {if(!sync){mdplayer.seek(value)}}
+                        Layout.fillWidth: true
+                    }
+
+                }
+
+                RowLayout{
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 3
+                    Layout.column: 0
+                    visible: {if(video.checked){true}else{false}}
+
                     Item{
                         Layout.fillWidth: true
 
                     }
 
+                    //Громкость звука
                     Slider{
-
                         id: vol
                         from: 0
                         value: 0.5
                         to:1
-
                     }
 
+                    //Кнопка Play
                     Button{
-
                         onClicked: mdplayer.play();
-
-
                     }
+
+                    //Кнопка Pause
                     Button{
                         onClicked: mdplayer.pause();
                     }
 
                     Item{
                         Layout.fillWidth: true
-
                     }
 
                 }
+
+                //Камера
+                RowLayout{
+                    visible: {if(cam.checked){true}else{false}}
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 3
+                    Layout.column: 0
+
+                    Item{
+                        Layout.fillWidth: true
+                    }
+                    Camera {
+                            id: camera
+
+                            imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
+
+                            exposure {
+                                exposureCompensation: -1.0
+                                exposureMode: Camera.ExposurePortrait
+                            }
+
+                            flash.mode: Camera.FlashRedEyeReduction
+
+                            imageCapture {
+                                onImageCaptured: {
+                                    photoPreview.source = preview  // Show the preview in an Image
+                                }
+                            }
+                        }
+
+                        VideoOutput {
+                            source: camera
+                            //anchors.fill: parent
+                            focus : visible // to receive focus and capture key events when visible
+                        }
+
+                        Image {
+                            id: photoPreview
+                        }
+
+                    Item{
+                        Layout.fillWidth: true
+                    }
+                }
+
             }
 
 
