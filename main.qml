@@ -30,18 +30,14 @@ ApplicationWindow {
 
                     Item{
                     Layout.fillWidth: true
-
                     }
 
                     BusyIndicator{
                         id: bsi
-
                     }
 
                     Label{
                         text: "MoscowPolytechPlayer"
-
-
                         font.family: "Arial"
                         font.pixelSize: 30
                     }
@@ -62,11 +58,8 @@ ApplicationWindow {
                     }
 
                     TextField{
-                        text: "Never gonna give you up blabla"
-    //                    Layout.column: 1
-    //                    Layout.columnSpan: 3
+                        text: "Never gonna give you up"
                         Layout.fillWidth: true
-    //                    Layout.row: 1
                     }
 
                     Item{
@@ -82,9 +75,6 @@ ApplicationWindow {
 
                     ProgressBar{
                         value: 0.25
-    //                    Layout.row: 2
-    //                    Layout.column: 0
-    //                    Layout.columnSpan: 4
                         Layout.fillWidth: true
                     }
                 }
@@ -101,21 +91,20 @@ ApplicationWindow {
 
                     Button{
                         id:btn1
-    //                    Layout.row: 3
-    //                    Layout.column: 1
+                        flat: true
+                        text: "<<"
                     }
-
 
                     Button{
                         id:btn2
-    //                    Layout.row: 3
-    //                    Layout.column: 2
+                        flat: true
+                        text: "►"
                     }
 
                     Button{
                         id:btn3
-    //                    Layout.row: 3
-    //                    Layout.column: 3
+                        flat: true
+                        text: ">>"
                     }
 
                     Item{
@@ -133,20 +122,26 @@ ApplicationWindow {
                     Layout.fillWidth: true
                     }
 
-                    Slider{
-    //                    Layout.row: 4
-    //                    Layout.column: 0
-    //                    Layout.columnSpan: 2
+                    Text {
+                        text: qsTr("Volume:")
+                        color: "#FFFFFF"
+                        font.pixelSize: 15
+                    }
+
+                    Slider{                        
                     }
 
                     Item{
                     Layout.fillWidth: true
                     }
 
+                    Text {
+                        text: qsTr("Shake:")
+                        color: "#FFFFFF"
+                        font.pixelSize: 15
+                    }
+
                     Switch{
-    //                    Layout.row: 4
-    //                    Layout.column: 4
-    //                    Layout.fillWidth: true
                     }
 
                     Item{
@@ -218,6 +213,7 @@ ApplicationWindow {
                         }
 
 
+
                     }
                     VideoOutput {
                         id: videoOutput
@@ -268,15 +264,17 @@ ApplicationWindow {
                         to:1
                     }
 
-                    //Кнопка Play
+                    //Кнопка Play|Pause
                     Button{
-                        onClicked: mdplayer.play();
+                        flat: true
+                        text: mdplayer.playbackState === MediaPlayer.PlayingState ? "||" : "►"
+                        onClicked: mdplayer.playbackState === MediaPlayer.PlayingState ?
+                        mdplayer.pause() : mdplayer.play()
+
+
                     }
 
-                    //Кнопка Pause
-                    Button{
-                        onClicked: mdplayer.pause();
-                    }
+
 
                     Item{
                         Layout.fillWidth: true
