@@ -338,10 +338,10 @@ ApplicationWindow {
         Page{
             header:
                 Button{
-                    text: "="
-                    Label{
-                        text: "My photo filter app"
-                    }
+                    // text: "="
+                    // Label{
+                    //     text: "My photo filter app"
+                    // }
 
                 }
 
