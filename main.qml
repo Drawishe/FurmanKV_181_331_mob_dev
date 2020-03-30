@@ -8,8 +8,8 @@ import QtMultimedia 5.14
 
 ApplicationWindow {
     visible: true
-    width: 480
-    height: 640
+    width: 640
+    height: 848
     title: qsTr("FurmanKV_181-331_MobDev")
 
     SwipeView {
@@ -185,11 +185,13 @@ ApplicationWindow {
                     }
                 }
 
-            //Воспроизведение Видео
+
             GridLayout{
                 anchors.fill: parent
                 columns: 4
 
+                //Воспроизведение Видео
+                //Медиаплеер
                 RowLayout{
                     Layout.fillWidth: true
                     Layout.columnSpan: 4
@@ -201,23 +203,28 @@ ApplicationWindow {
                         Layout.fillWidth: true
                     }
 
+                    Rectangle{
+                        width: 480
+                        height: 300
+                        MediaPlayer{
+                            id: mdplayer
+                            source: "astley.mp4"
+                            volume: vol.value
+                            onPositionChanged: {
+                                timeline.sync = true
+                                timeline.value = mdplayer.position
+                                timeline.sync = false
+                            }
 
-                    MediaPlayer{
-                        id: mdplayer
-                        source: "astley.mp4"
-                        volume: vol.value
-                        onPositionChanged: {
-                            timeline.sync = true
-                            timeline.value = mdplayer.position
-                            timeline.sync = false
+
+
                         }
 
-
-
-                    }
-                    VideoOutput {
-                        id: videoOutput
-                        source: mdplayer
+                        VideoOutput {
+                            id: videoOutput
+                            source: mdplayer
+                            anchors.fill: parent
+                        }
                     }
 
 
@@ -226,6 +233,7 @@ ApplicationWindow {
                     }
                 }
 
+                //Таймлайн
                 RowLayout{
                     Layout.fillWidth: true
                     Layout.columnSpan: 4
@@ -244,6 +252,7 @@ ApplicationWindow {
 
                 }
 
+                //Громкость и play/pause
                 RowLayout{
                     Layout.fillWidth: true
                     Layout.columnSpan: 4
@@ -257,6 +266,12 @@ ApplicationWindow {
                     }
 
                     //Громкость звука
+                    Text {
+                        text: qsTr("Volume:")
+                        color: "#FFFFFF"
+                        font.pixelSize: 15
+                    }
+
                     Slider{
                         id: vol
                         from: 0
@@ -283,19 +298,23 @@ ApplicationWindow {
                 }
 
                 //Камера
+                //Захват видео
                 RowLayout{
                     visible: {if(cam.checked){true}else{false}}
                     Layout.fillWidth: true
                     Layout.columnSpan: 4
-                    Layout.row: 3
+                    Layout.row: 1
                     Layout.column: 0
 
                     Item{
                         Layout.fillWidth: true
                     }
-                    Camera {
+                    Rectangle{
+                        width: 480
+                        height: 320
+                        Camera {
                             id: camera
-
+                            digitalZoom: 10
                             imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
 
                             exposure {
@@ -303,24 +322,75 @@ ApplicationWindow {
                                 exposureMode: Camera.ExposurePortrait
                             }
 
-                            flash.mode: Camera.FlashRedEyeReduction
+                            //flash.mode: Camera.FlashRedEyeReduction
 
                             imageCapture {
                                 onImageCaptured: {
                                     photoPreview.source = preview  // Show the preview in an Image
+
                                 }
+
+//                            imageSaved{
+//                                onImageSaved: {
+//                                    photoPreview.source = img
+//                                }
+//                            }
+
                             }
                         }
 
                         VideoOutput {
                             source: camera
-                            //anchors.fill: parent
+                            anchors.fill: parent
                             focus : visible // to receive focus and capture key events when visible
                         }
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+                    }
+
+
+                }
+
+                //Блок кнопок
+                RowLayout{
+                    visible: {if(cam.checked){true}else{false}}
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 4
+                    Layout.row: 2
+                    Layout.column: 0
+
+                    Item{
+                        Layout.fillWidth: true
+                    }
+                    Slider{
+                        id:zoom
+                        from:0
+                        value: 0
+                        to:100
+                    }
+                    Button{
+                        text: "photo"
+                        onClicked: camera.imageCapture.captureToLocation("D:/MobDev/FurmanKV_181_331_mob_dev/img")
+
+                    }
+                    Button{
+                        text: "record"
+                    }
+
+                    Rectangle{
+                    width: 80
+                    height: 80
 
                         Image {
                             id: photoPreview
+                            anchors.fill: parent
                         }
+                        MouseArea{
+                            //onClicked: camera.
+                        }
+                    }
 
                     Item{
                         Layout.fillWidth: true
