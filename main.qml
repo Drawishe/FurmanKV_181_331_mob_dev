@@ -312,10 +312,16 @@ ApplicationWindow {
                     Rectangle{
                         width: 480
                         height: 320
+
                         Camera {
                             id: camera
-                            digitalZoom: 10
                             imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
+
+                            videoRecorder.audioEncodingMode: CameraRecorder.ConstantBitrateEncoding;
+                            videoRecorder.audioBitRate: 48000
+                            videoRecorder.mediaContainer: "mp4"
+                            videoRecorder.outputLocation: "D:/MobDev/FurmanKV_181_331_mob_dev/video"
+                            videoRecorder.frameRate: 30.000
 
                             exposure {
                                 exposureCompensation: -1.0
@@ -329,13 +335,6 @@ ApplicationWindow {
                                     photoPreview.source = preview  // Show the preview in an Image
 
                                 }
-
-//                            imageSaved{
-//                                onImageSaved: {
-//                                    photoPreview.source = img
-//                                }
-//                            }
-
                             }
                         }
 
@@ -364,19 +363,20 @@ ApplicationWindow {
                     Item{
                         Layout.fillWidth: true
                     }
-                    Slider{
-                        id:zoom
-                        from:0
-                        value: 0
-                        to:100
-                    }
+
                     Button{
                         text: "photo"
-                        onClicked: camera.imageCapture.captureToLocation("D:/MobDev/FurmanKV_181_331_mob_dev/img")
-
+                        onClicked: camera.imageCapture.captureToLocation("D:/MobDev/FurmanKV_181_331_mob_dev/photo")
                     }
+
                     Button{
                         text: "record"
+                        onClicked: camera.videoRecorder.record()
+                    }
+
+                    Button{
+                        text: "stop"
+                        onClicked: camera.videoRecorder.stop()
                     }
 
                     Rectangle{
@@ -388,7 +388,8 @@ ApplicationWindow {
                             anchors.fill: parent
                         }
                         MouseArea{
-                            //onClicked: camera.
+
+
                         }
                     }
 
