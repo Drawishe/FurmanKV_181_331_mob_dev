@@ -33,7 +33,7 @@ ApplicationWindow {
                     }
 
                     BusyIndicator{
-                        id: bsi
+
                     }
 
                     Label{
@@ -606,6 +606,37 @@ ApplicationWindow {
         //lab5
         Page{
 
+//            GridLayout{
+//                anchors.fill:parent
+//                columns:3
+//                rows:3
+
+//                Button{
+//                    Layout.column:1
+//                    Layout.row:2
+//                    text:"Авторизация"
+//                    onClicked:{
+//                        //сделать браузер видимым, прогрузить первый юрл для аутентификации
+//                        browser.visible = true;
+//                        browser.url = ""
+//                    }
+//                }
+//            }
+//            WebView{
+//                id:browser
+//                visible:false
+//                anchors.fill:parent
+//                url:"https://google.com"
+//                onLoadingChanged:{
+//                    if(loadRequest==WebView.LoadStartedStatus)
+//                        break;
+//                    else if(loadRequest == webView.LoadSuccededStatus)
+//                        console.info("***"+browser.url)
+                    
+//                }
+
+//            }
+
 
 
 
@@ -653,21 +684,74 @@ ApplicationWindow {
 //        }
     }
     Drawer {
-        //anchors.fill:parent
-        width:0.66 * parent.width
+        id: drawer
+        width: parent.width * 0.67
         height: parent.height
-        GridLayout {
+        dragMargin: 20
+        ColumnLayout{
             anchors.fill: parent
-            columns: 1
-            Button{}
-            Button{}
-            Button{}
-            Switch {
-                onScaleChanged: {
-                    text = "green";
+            Button{
+                text: "Lab 1"
+                Layout.row: 0
+                Layout.column: 0
+                Layout.columnSpan: 1
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                background: Rectangle{
+                    color: "#808080"
+                }
+                onClicked: {
+                    swipeView.currentIndex = 0;
+                    drawer.close();
+                }
+            }
+            Button{
+                text: "Lab 2"
+                Layout.row: 1
+                Layout.column: 0
+                Layout.columnSpan: 1
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                background: Rectangle{
+                    color: "#808080"
+                }
+                onClicked: {
+                    swipeView.currentIndex = 1;
+                    drawer.close();
+                }
+            }
+            Button{
+                text: "Lab 3"
+                Layout.row: 2
+                Layout.column: 0
+                Layout.columnSpan: 1
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                background: Rectangle{
+                    color: "#808080"
+                }
+                onClicked: {
+                    swipeView.currentIndex = 2;
+                    drawer.close();
+                }
+            }
+            Button{
+                text: "Lab 4"
+                Layout.row: 3
+                Layout.column: 0
+                Layout.columnSpan: 1
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                background: Rectangle{
+                    color: "#808080"
+                }
+                onClicked: {
+                    swipeView.currentIndex = 3;
+                    drawer.close();
                 }
             }
         }
+
 
     }
 
@@ -675,21 +759,21 @@ ApplicationWindow {
         id: tabBar
         currentIndex: swipeView.currentIndex
 
-        TabButton {
-            text: qsTr("Lab1")
-        }
-        TabButton {
-            text: qsTr("Lab2")
-        }
-        TabButton {
-            text: qsTr("Lab3")
-        }
-        TabButton {
-            text: qsTr("Lab4")
-        }
-        TabButton {
-            text: qsTr("Lab5")
-        }
+//        TabButton {
+//            text: qsTr("Lab1")
+//        }
+//        TabButton {
+//            text: qsTr("Lab2")
+//        }
+//        TabButton {
+//            text: qsTr("Lab3")
+//        }
+//        TabButton {
+//            text: qsTr("Lab4")
+//        }
+//        TabButton {
+//            text: qsTr("Lab5")
+//        }
 //        TabButton {
 //            text: qsTr("Lab6")
 //        }
