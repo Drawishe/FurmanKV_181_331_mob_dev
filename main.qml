@@ -408,13 +408,7 @@ ApplicationWindow {
         //Lab3
         Page{
             header:
-                Button{
-                    // text: "="
-                    // Label{
-                    //     text: "My photo filter app"
-                    // }
 
-                }
 
             GridLayout {
 
@@ -434,11 +428,40 @@ ApplicationWindow {
                         Layout.fillWidth: true
 
                     }
+
+                    RadioButton{
+                        id:des
+                    }
+
+                    RadioButton{
+                        id:rcBlur
+                    }
+
+                    RadioButton{
+                        id:gaBlur
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
+
+                //Desaturation
+                RowLayout{
+                    Layout.fillWidth: true
+                    visible: {if(des.checked){true}else{false}}
+                    Layout.row: 1
+                    Layout.column: 0
+                    Layout.columnSpan: 4
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
                     Item{
 
                         width: 300; height: 300
-
-
 
                         Image {
                             id: rick
@@ -456,44 +479,26 @@ ApplicationWindow {
                             desaturation: slideDesaturation.value
 
                         }
-
-                        RecursiveBlur{
-                            anchors.fill: rick
-                            source: rick
-                            radius:  slideRadius.value
-                            loops: slideRec.value
-                        }
-
-//                        GaussianBlur{
-//                            anchors.fill: rick
-//                            source: rick
-//                            radius: slideRadius.value
-//                            samples:slideGaus.value
-//                        }
-
-
                     }
-
-                    Item{
-                        Layout.fillWidth: true
-
-                    }
-
                 }
+
                 RowLayout{
                     Layout.fillWidth: true
-                    Layout.columnSpan: 4
-                    Layout.row: 1
+                    visible: {if(des.checked){true}else{false}}
+                    Layout.row: 2
                     Layout.column: 0
+                    Layout.columnSpan: 4
 
                     Item{
                         Layout.fillWidth: true
 
                     }
+
                     Label{
                         text: "Desaturation"
 
                     }
+
                     Slider{
 
                         id:slideDesaturation
@@ -502,13 +507,54 @@ ApplicationWindow {
                         to:1
 
                     }
+
                     Item{
                         Layout.fillWidth: true
 
                     }
                 }
+
+                //Recursive Blur
+
                 RowLayout{
                     Layout.fillWidth: true
+                    visible: {if(rcBlur.checked){true}else{false}}
+                    Layout.row: 1
+                    Layout.column: 0
+                    Layout.columnSpan: 4
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                    Item{
+
+                        width: 300; height: 300
+
+
+
+                        Image {
+                            id:rick1
+                            source: "rick.png"
+                            sourceSize: Qt.size(parent.width, parent.height)
+                            fillMode: Image.PreserveAspectFit
+                            smooth: true
+                            visible: false
+                        }
+
+                        RecursiveBlur{
+                            anchors.fill: rick1
+                            source: rick1
+                            radius:  slideRadius.value
+                            loops: slideRec.value
+                            progress: blPrg.value
+                            transparentBorder: blTr.value
+                        }
+                    }
+                }
+                RowLayout{
+                    Layout.fillWidth: true
+                    visible: {if(rcBlur.checked){true}else{false}}
                     Layout.columnSpan: 4
                     Layout.row: 2
                     Layout.column: 0
@@ -532,8 +578,10 @@ ApplicationWindow {
 
                     }
                 }
+
                 RowLayout{
                     Layout.fillWidth: true
+                    visible: {if(rcBlur.checked){true}else{false}}
                     Layout.columnSpan: 4
                     Layout.row: 3
                     Layout.column: 0
@@ -543,7 +591,7 @@ ApplicationWindow {
                     }
 
                     Label{
-                        text: "Recursive Blur"
+                        text: "Loops:"
                     }
                     Slider{
                         id: slideRec
@@ -556,8 +604,10 @@ ApplicationWindow {
 
                     }
                 }
+
                 RowLayout{
                     Layout.fillWidth: true
+                    visible: {if(rcBlur.checked){true}else{false}}
                     Layout.columnSpan: 4
                     Layout.row: 4
                     Layout.column: 0
@@ -567,7 +617,139 @@ ApplicationWindow {
                     }
 
                     Label{
-                        text: "Gauss Blur"
+                        text: "Progress:"
+                    }
+
+                    Slider{
+                        id: blPrg
+                        from: 1
+                        value: 0
+                        to:100
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
+                RowLayout{
+                    Layout.fillWidth: true
+                    visible: {if(rcBlur.checked){true}else{false}}
+                    Layout.columnSpan: 4
+                    Layout.row: 5
+                    Layout.column: 0
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+
+                    Label{
+                        text: "Transparent Border:"
+                    }
+
+                    CheckBox{
+                        id:blTr
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
+
+                //Gaussian Blur
+
+                RowLayout{
+                    Layout.fillWidth: true
+                    visible: {if(gaBlur.checked){true}else{false}}
+                    Layout.row: 1
+                    Layout.column: 0
+                    Layout.columnSpan: 4
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+
+                    Item{
+
+                        width: 300; height: 300
+                        Image {
+                            id: rick2
+                            source: "rick.png"
+                            sourceSize: Qt.size(parent.width, parent.height)
+                            fillMode: Image.PreserveAspectFit
+                            smooth: true
+                            visible: false
+
+
+                        }
+
+
+                        GaussianBlur{
+                            anchors.fill: rick2
+                            source: rick2
+                            radius: gausRadius.value
+                            samples:slideGaus.value
+                            deviation: gausDevia.value
+                            transparentBorder: gausTr.value
+
+                        }
+
+
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+
+                }
+                RowLayout{
+                    Layout.fillWidth: true
+                    visible: {if(gaBlur.checked){true}else{false}}
+                    Layout.columnSpan: 4
+                    Layout.row: 2
+                    Layout.column: 0
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                    Label{
+                        text: "Blur Radius:"
+                    }
+
+                    Slider {
+                        id: gausRadius
+                        from: 0
+                        value: 0
+                        to:16
+                    }
+
+
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
+
+
+
+                RowLayout{
+                    Layout.fillWidth: true
+                    visible: {if(gaBlur.checked){true}else{false}}
+                    Layout.columnSpan: 4
+                    Layout.row: 3
+                    Layout.column: 0
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+
+                    Label{
+                        text: "Samples:"
                     }
 
 
@@ -588,12 +770,63 @@ ApplicationWindow {
 
 
                 }
+                RowLayout{
+                    Layout.fillWidth: true
+                    visible: {if(gaBlur.checked){true}else{false}}
+                    Layout.columnSpan: 4
+                    Layout.row: 4
+                    Layout.column: 0
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+
+                    Label{
+                        text: "Transparent Border:"
+                    }
+
+                    CheckBox{
+                        id:gausTr
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
+                RowLayout{
+                    Layout.fillWidth: true
+                    visible: {if(gaBlur.checked){true}else{false}}
+                    Layout.columnSpan: 4
+                    Layout.row: 5
+                    Layout.column: 0
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+
+                    Label{
+                        text: "Deviation:"
+                    }
+
+                    Slider{
+                        id: gausDevia
+                        from:0
+                        value:0
+                        to:1
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
 
 
 
 
-            }
-        }
+            }}
+
 
         //Lab4
         Page{
