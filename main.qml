@@ -7,10 +7,17 @@ import QtMultimedia 5.14
 
 
 ApplicationWindow {
+    signal makeRequest()
     visible: true
     width: 640
     height: 848
     title: qsTr("FurmanKV_181-331_MobDev")
+    Connections{
+            target: httpcontroller
+            function onToQML(pString){
+                https.append(pString);
+            }
+        }
 
     SwipeView {
         id: swipeView
@@ -480,6 +487,11 @@ ApplicationWindow {
 
                         }
                     }
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
                 }
 
                 RowLayout{
@@ -539,7 +551,7 @@ ApplicationWindow {
                             sourceSize: Qt.size(parent.width, parent.height)
                             fillMode: Image.PreserveAspectFit
                             smooth: true
-                            visible: false
+                            //visible: false
                         }
 
                         RecursiveBlur{
@@ -550,6 +562,11 @@ ApplicationWindow {
                             progress: blPrg.value
                             transparentBorder: blTr.value
                         }
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+
                     }
                 }
                 RowLayout{
@@ -593,6 +610,7 @@ ApplicationWindow {
                     Label{
                         text: "Loops:"
                     }
+
                     Slider{
                         id: slideRec
                         from: 1
@@ -622,7 +640,7 @@ ApplicationWindow {
 
                     Slider{
                         id: blPrg
-                        from: 1
+                        from: 0
                         value: 0
                         to:100
                     }
@@ -674,6 +692,8 @@ ApplicationWindow {
                     Item{
 
                         width: 300; height: 300
+                        Layout.column: 1
+                        Layout.columnSpan: 2
                         Image {
                             id: rick2
                             source: "rick.png"
@@ -830,6 +850,76 @@ ApplicationWindow {
 
         //Lab4
         Page{
+            header:
+
+
+            GridLayout {
+
+                anchors.fill: parent
+                columns: 4
+
+
+                RowLayout{
+                    Layout.fillWidth: true
+
+                    Layout.row: 0
+                    Layout.column: 0
+                    Layout.columnSpan: 4
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+
+                    TextArea{
+                        id: https
+                        readOnly: true
+                    }
+
+                    Item{
+                        Layout.fillWidth: true
+
+                    }
+                }
+
+                RowLayout{
+                    Layout.fillWidth: true
+
+                    Layout.row: 1
+                    Layout.column: 0
+                    Layout.columnSpan: 4
+
+                    Button{
+                        text: "Вывод"
+                        Layout.fillWidth: true
+                        id: btnHttps
+                        onClicked: {
+                            makeRequest();
+                        }
+
+                    }
+
+
+                }
+                RowLayout{
+                    Layout.fillWidth: true
+
+                    Layout.row: 2
+                    Layout.column: 0
+                    Layout.columnSpan: 4
+
+                    Label{
+                        text: "Курс Злотого:"
+                    }
+
+                    TextArea{
+                        id: zloty
+                    }
+
+
+                }
+
+            }
 
 
 
@@ -991,36 +1081,5 @@ ApplicationWindow {
     footer: TabBar {
         id: tabBar
         currentIndex: swipeView.currentIndex
-
-//        TabButton {
-//            text: qsTr("Lab1")
-//        }
-//        TabButton {
-//            text: qsTr("Lab2")
-//        }
-//        TabButton {
-//            text: qsTr("Lab3")
-//        }
-//        TabButton {
-//            text: qsTr("Lab4")
-//        }
-//        TabButton {
-//            text: qsTr("Lab5")
-//        }
-//        TabButton {
-//            text: qsTr("Lab6")
-//        }
-//        TabButton {
-//            text: qsTr("Lab7")
-//        }
-//        TabButton {
-//            text: qsTr("Lab8")
-//        }
-//        TabButton {
-//            text: qsTr("Lab9")
-//        }
-//        TabButton {
-//            text: qsTr("Lab10")
-//        }
     }
 }
