@@ -12,12 +12,7 @@ ApplicationWindow {
     width: 640
     height: 848
     title: qsTr("FurmanKV_181-331_MobDev")
-    Connections{
-            target: httpcontroller
-            function onToQML(pString){
-                https.append(pString);
-            }
-        }
+
 
     SwipeView {
         id: swipeView

@@ -67,14 +67,15 @@ Page{
             Item{
                 
                 width: 300; height: 300
-                
+
                 Image {
                     id: rick
                     source: "rick.png"
                     sourceSize: Qt.size(parent.width, parent.height)
-                    fillMode: Image.PreserveAspectFit
+                    fillMode: Image.PreserveAspectCrop
                     smooth: true
                     visible: false
+
                     
                     
                 }
@@ -138,10 +139,10 @@ Page{
                 
             }
             Item{
-                
+
                 width: 300; height: 300
-                
-                
+
+
                 
                 Image {
                     id:rick1

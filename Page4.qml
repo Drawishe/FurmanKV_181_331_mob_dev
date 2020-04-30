@@ -7,6 +7,12 @@ import QtMultimedia 5.14
 
 
 Page{
+    Connections{
+            target: httpcontroller
+            function onToQML(pString){
+                https.append(pString);
+            }
+        }
     id: page4
     header:
         
@@ -15,9 +21,36 @@ Page{
         
         anchors.fill: parent
         columns: 4
+        RowLayout{
+            Layout.fillWidth: true
+
+            Layout.row: 0
+            Layout.column: 0
+            Layout.columnSpan: 4
+
+            Item{
+                Layout.fillWidth: true
+
+            }
+
+            RadioButton{
+                id: lab4html
+                checked: true
+            }
+
+            RadioButton{
+                id: lab4parce
+            }
+
+            Item{
+                Layout.fillWidth: true
+
+            }
+        }
         
         
         RowLayout{
+            visible: {if(lab4html.checked){true}else{false}}
             Layout.fillWidth: true
             
             Layout.row: 0
@@ -28,10 +61,13 @@ Page{
                 Layout.fillWidth: true
                 
             }
-            
-            TextArea{
-                id: https
-                readOnly: true
+            ScrollView{
+                id: scrlview
+                anchors.fill: parent
+                TextArea{
+                    id: https
+                    readOnly: true
+                }
             }
             
             Item{
@@ -41,6 +77,7 @@ Page{
         }
         
         RowLayout{
+            visible: {if(lab4html.checked){true}else{false}}
             Layout.fillWidth: true
             
             Layout.row: 1
@@ -60,6 +97,7 @@ Page{
             
         }
         RowLayout{
+            visible: {if(lab4parce.checked){true}else{false}}
             Layout.fillWidth: true
             
             Layout.row: 2

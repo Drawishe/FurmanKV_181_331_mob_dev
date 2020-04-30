@@ -12,14 +12,16 @@ HttpController::HttpController(QObject *parent) : QObject(parent)
 
 void HttpController::getSiteValue()
 {
-    qDebug() << "*** slot doServerRequest() started";
+    //qDebug() << "*** slot doServerRequest() started";
     QNetworkRequest request;
-    request.setUrl(QUrl("http://io.games/"));
+    request.setUrl(QUrl("https://music.yandex.ru/"));
 
-    qDebug() << request.url() << request.rawHeaderList();
+    //qDebug() << request.url() << request.rawHeaderList();
+    //qDebug() << QSslSocket::supportsSsl() << QSslSocket::sslLibraryBuildVersionString() << QSslSocket::sslLibraryVersionString();
+
 
     QNetworkReply * reply;
-   qDebug() << "*** before get()";
+    //qDebug() << "*** before get()";
 
 
 
