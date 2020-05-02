@@ -8,51 +8,23 @@ import QtMultimedia 5.14
 
 Page{
     Connections{
-            target: httpcontroller
-            function onToQML(pString){
-                https.append(pString);
-            }
-        }
+           target: httpcontroller
+           function onToQML(pString, nString){
+               https.append(pString);
+               zloty.text = nString;
+           }
+       }
+
     id: page4
     header:
         
         
-        GridLayout {
-        
+        GridLayout {        
         anchors.fill: parent
         columns: 4
-        RowLayout{
-            Layout.fillWidth: true
-
-            Layout.row: 0
-            Layout.column: 0
-            Layout.columnSpan: 4
-
-            Item{
-                Layout.fillWidth: true
-
-            }
-
-            RadioButton{
-                id: lab4html
-                checked: true
-            }
-
-            RadioButton{
-                id: lab4parce
-            }
-
-            Item{
-                Layout.fillWidth: true
-
-            }
-        }
-        
         
         RowLayout{
-            visible: {if(lab4html.checked){true}else{false}}
             Layout.fillWidth: true
-            
             Layout.row: 0
             Layout.column: 0
             Layout.columnSpan: 4
@@ -61,12 +33,20 @@ Page{
                 Layout.fillWidth: true
                 
             }
-            ScrollView{
-                id: scrlview
-                anchors.fill: parent
-                TextArea{
-                    id: https
-                    readOnly: true
+
+            Rectangle{
+                width: 320
+                height: 480
+                ScrollView{
+                    id: scrlview
+                    anchors.fill: parent
+                    TextArea{
+                        id: https
+                        textFormat: Text.RichText
+                        readOnly: true
+                        color: "#000000"
+
+                    }
                 }
             }
             
@@ -77,9 +57,8 @@ Page{
         }
         
         RowLayout{
-            visible: {if(lab4html.checked){true}else{false}}
-            Layout.fillWidth: true
-            
+
+            Layout.fillWidth: true            
             Layout.row: 1
             Layout.column: 0
             Layout.columnSpan: 4
@@ -97,9 +76,8 @@ Page{
             
         }
         RowLayout{
-            visible: {if(lab4parce.checked){true}else{false}}
-            Layout.fillWidth: true
-            
+
+            Layout.fillWidth: true            
             Layout.row: 2
             Layout.column: 0
             Layout.columnSpan: 4

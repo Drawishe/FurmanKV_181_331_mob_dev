@@ -11,8 +11,10 @@ public:
     QNetworkAccessManager * nam;
 public slots:
     void getSiteValue();
+
 signals:
-    void toQML(QString reply);
+
+    void toQML(QString reply, QString number);
 };
 
 #endif // QHTTPCONTROLLER_H
