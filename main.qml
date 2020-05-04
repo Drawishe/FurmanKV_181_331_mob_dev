@@ -40,78 +40,9 @@ ApplicationWindow {
         }
 
         //lab5
-        Page{
-
-//            GridLayout{
-//                anchors.fill:parent
-//                columns:3
-//                rows:3
-
-//                Button{
-//                    Layout.column:1
-//                    Layout.row:2
-//                    text:"Авторизация"
-//                    onClicked:{
-//                        //сделать браузер видимым, прогрузить первый юрл для аутентификации
-//                        browser.visible = true;
-//                        browser.url = ""
-//                    }
-//                }
-//            }
-//            WebView{
-//                id:browser
-//                visible:false
-//                anchors.fill:parent
-//                url:"https://google.com"
-//                onLoadingChanged:{
-//                    if(loadRequest==WebView.LoadStartedStatus)
-//                        break;
-//                    else if(loadRequest == webView.LoadSuccededStatus)
-//                        console.info("***"+browser.url)
-                    
-//                }
-
-//            }
-
-
-
-
-
+        Page5 {
+            id: page5
         }
-//        //lab6
-//        Page{
-
-
-
-
-
-//        }
-//        //lab7
-//        Page{
-
-
-
-
-
-//        }
-//        //lab8
-//        Page{
-
-
-
-
-
-//        }
-//        //lab9
-//        Page{
-
-
-
-
-
-//        }
-//        //lab10
-//        Page{
 
 
 
@@ -183,6 +114,21 @@ ApplicationWindow {
                 }
                 onClicked: {
                     swipeView.currentIndex = 3;
+                    drawer.close();
+                }
+            }
+            Button{
+                text: "Lab 5"
+                Layout.row: 4
+                Layout.column: 0
+                Layout.columnSpan: 1
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                background: Rectangle{
+                    color: "#808080"
+                }
+                onClicked: {
+                    swipeView.currentIndex = 4;
                     drawer.close();
                 }
             }

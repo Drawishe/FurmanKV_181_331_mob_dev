@@ -47,4 +47,19 @@ void HttpController::getSiteValue()
     emit toQML(QString(replystr), plncost);
 
 }
-
+void HttpController::token(QString url){
+    QString token;
+    if(url.contains("email=") || url.contains("access_token="))
+    {
+        if (url.contains("access_token=")) // если все успешно
+        {
+            token = url.split("access_token=")[1].split("&")[0]; // записываем наш access_token в переменную
+            emit toQML3(url, token);
+            //qDebug() << "Access Token: " << token;
+        }
+        else{
+            emit toQML4();
+            //qDebug() << "No token (((";
+        }
+    }
+}
