@@ -50,6 +50,7 @@ Page{
                 color: "#FFFFFF"
                 width: 400
                 height: 300
+
                 WebView{
                     id: webv
                     anchors.fill: parent
