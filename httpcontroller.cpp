@@ -51,15 +51,15 @@ void HttpController::token(QString url){
     QString token;
     if(url.contains("email=") || url.contains("access_token="))
     {
-        if (url.contains("access_token=")) // если все успешно
+        if (url.contains("access_token="))
         {
             token = url.split("access_token=")[1].split("&")[0]; // записываем наш access_token в переменную
             emit toQML3(url, token);
-            //qDebug() << "Access Token: " << token;
+            qDebug() << "Access Token: " << token;
         }
         else{
             emit toQML4();
-            //qDebug() << "No token (((";
+            qDebug() << "No token";
         }
     }
 }

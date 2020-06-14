@@ -21,81 +21,52 @@ Page{
         
         GridLayout {        
         anchors.fill: parent
-        columns: 4
-        
-        RowLayout{
-            Layout.fillWidth: true
-            Layout.row: 0
-            Layout.column: 0
-            Layout.columnSpan: 4
-            
-            Item{
-                Layout.fillWidth: true
-                
-            }
+        columns: 2
 
             Rectangle{
-                width: 320
-                height: 480
+                Layout.row: 0
+                Layout.column: 0
+                Layout.columnSpan: 2
+                Layout.fillHeight: true
+                Layout.fillWidth: true
                 ScrollView{
                     id: scrlview
                     anchors.fill: parent
                     TextArea{
                         id: https
-                        textFormat: Text.RichText
+                        //textFormat: Text.RichText
                         readOnly: true
                         color: "#000000"
 
                     }
                 }
             }
-            
-            Item{
-                Layout.fillWidth: true
-                
-            }
-        }
-        
-        RowLayout{
-
-            Layout.fillWidth: true            
-            Layout.row: 1
-            Layout.column: 0
-            Layout.columnSpan: 4
-            
+                        
             Button{
-                text: "Вывод"
                 Layout.fillWidth: true
+                Layout.row: 1
+                Layout.column: 0
+                Layout.columnSpan: 2
+                text: "Вывод"
+                //Layout.fillWidth: true
                 id: btnHttps
                 onClicked: {
                     makeRequest();
                 }
-                
             }
             
-            
-        }
-        RowLayout{
-
-            Layout.fillWidth: true            
-            Layout.row: 2
-            Layout.column: 0
-            Layout.columnSpan: 4
-            
             Label{
+                Layout.row: 2
+                Layout.column: 0
+                Layout.columnSpan: 1
                 text: "Курс Злотого:"
             }
             
             TextArea{
+                Layout.row: 2
+                Layout.column: 2
                 id: zloty
             }
-            
-            
-        }
-        
     }
-    
-    
-    
     
 }
