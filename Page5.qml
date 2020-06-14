@@ -38,22 +38,15 @@ Page{
         columns:4
         rows:4
 
-            Item{
-                Layout.row: 0
-                Layout.rowSpan: 2
-                Layout.column: 0
-                Layout.fillWidth: true
-
-            }
             Rectangle{
                 Layout.row: 0
                 Layout.rowSpan: 2
-                Layout.column: 1
-                Layout.columnSpan: 2
+                Layout.column: 0
+                Layout.columnSpan: 4
 
                 id: rectgweb
                 color: "#FFFFFF"
-                visible: true
+                visible: false
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
@@ -62,7 +55,7 @@ Page{
                     id: webv
                     anchors.fill: parent
                     visible: false
-                    url: "https://oauth.yandex.ru/authorize?response_type=token&client_id=7863e8b33d714436bb78eb8ed3232523&redirect_uri=https://yandex.ru/video/"
+                    url: "https://oauth.yandex.ru/authorize?response_type=token&client_id=7863e8b33d714436bb78eb8ed3232523&redirect_uri=http://localhost"
                     onLoadingChanged: {
                         debug.text = webv.url;
                         httpcontroller.token(webv.url);
@@ -79,7 +72,6 @@ Page{
             TextField{
                 Layout.row: 0
                 Layout.column: 2
-                //Layout.columnSpan: 2
                 id: logf
 
             }
@@ -91,8 +83,7 @@ Page{
             }
             TextField{
                 Layout.row: 1
-                Layout.column: 2
-                //Layout.columnSpan: 2
+                Layout.column: 2                
                 id:passf
 
             }
@@ -116,172 +107,73 @@ Page{
                     logf.visible=false
                     passf.visible=false
                     passt.visible=false
+                    rectgweb.visible=true
 
                 }
             }
 
-            Item{
+            Rectangle{
+                id: rectg15
+                visible: false
+                color: "#FFFFFF"
                 Layout.row: 0
-                Layout.rowSpan: 2
-                Layout.column: 4
-                Layout.fillWidth: true
-
-            }
-
-//        RowLayout{
-//            Layout.fillWidth: true
-//            Layout.row: 1
-//            Layout.column: 0
-//            Layout.columnSpan: 4
-
-//            Item{
-//                Layout.fillWidth: true
-
-//            }
-
-//            Rectangle{
-//                id: rectg15
-//                visible: false
-//                color: "#808080"
-//                width: 300
-//                height: 200
-
-//                Text{
-//                    id: access5
-//                    visible: false
-//                    font.pointSize: 18
-//                    anchors.fill: parent
-//                    text: "Access Granted!"
-//                }
-//                Text{
-//                    id: accesst5
-//                     anchors.fill: parent
-//                    visible: false
-//                    font.pointSize: 16
-//                    text: "Access Token: "
-//                }
-
-//                Text {
-//                    id: accesst51
-//                     anchors.fill: parent
-//                    visible: false
-//                    font.pointSize: 10
-//                    wrapMode: TextArea.Wrap
-//                }
-
-
-
-
-//            }
-
-
-
-
-//            Rectangle{
-//                id: rectg25
-//                visible: false
-//                color: "#EA0101"
-
-//                Text {
-//                    id: access52
-//                    font.pointSize: 18
-//                    text: "Error! Access Denied!"
-
-//                }
-
-//                Button{
-//                    id: btn52
-//                    text: "Повторить"
-//                    font.pointSize: 16
-//                    onClicked:
-//                    {
-//                        rectg25.visible = false;
-//                        webv.visible = true; //видимость браузера
-//                        webv.url = "https://oauth.yandex.ru/authorize?" //первый url аутентификации
-//                                + "response_type=token"
-//                                + "&client_id=7863e8b33d714436bb78eb8ed3232523"
-//                                + "&redirect_uri=https://yandex.ru/video/"
-//                        ;
-
-
-
-//                        //[& device_id=<идентификатор устройства>]
-//                        //[& device_name=<имя устройства>]
-//                        //                    [& redirect_uri=<адрес перенаправления>]
-//                        //                    [& login_hint=<имя пользователя или электронный адрес>]
-//                        //                    [& scope=<запрашиваемые необходимые права>]
-//                        //                    [& optional_scope=<запрашиваемые опциональные права>]
-//                        //                    [& force_confirm=yes]
-//                        //                    [& state=<произвольная строка>]
-//                        //                    [& display=popup]
-//                    }
-
-//                }
-//            }
-
-//            Item{
-//                Layout.fillWidth: true
-
-//            }
-
-//            RowLayout{
-//                Layout.fillWidth: true
-//                Layout.row: 2
-//                Layout.column: 0
-//                Layout.columnSpan: 4
-
-//                Item{
-//                    Layout.fillWidth: true
-
-//                }
-//                Text{
-//                    id: url5
-//                    visible: false
-//                    font.pointSize: 16
-//                    width: 30
-//                    text: "URL: "
-//                }
-
-//                Text{
-//                    id: url51
-//                    visible: false
-//                    font.pointSize: 10
-//                    wrapMode: TextArea.Wrap
-
-//                }
-//                Item{
-//                    Layout.fillWidth: true
-
-//                }
-//            }
-
-//        }
-//        RowLayout{
-
-
-//            Item{
-//                Layout.fillWidth: true
-
-//            }
-            TextArea{
-                Layout.fillWidth: true
-                Layout.row: 4
+                Layout.rowSpan: 4
                 Layout.column: 0
                 Layout.columnSpan: 4
-                id: debug
-                font.pointSize: 10
-                wrapMode: TextArea.Wrap
             }
 
-//            Item{
-//                Layout.fillWidth: true
+                Text{
+                    id: access5
+                    Layout.row: 1
+                    Layout.column: 0
+                    Layout.columnSpan: 4
+                    visible: false
+                    font.pointSize: 18
+                    //anchors.fill: parent
+                    text: "Доступ разрешен!"
+                }
+                Text{
+                    id: accesst5
+                    Layout.row: 2
+                    Layout.column: 1
+                    //Layout.columnSpan: 4
+                     //anchors.fill: parent
+                    visible: false
+                    font.pointSize: 16
+                    text: "Access Token: "
+                }
 
-//            }
+                Text {
+                    id: accesst51
+                    Layout.row: 2
+                    Layout.column: 2
+                    Layout.columnSpan: 2
+                    // anchors.fill: parent
+                    visible: false
+                    font.pointSize: 10
+                    wrapMode: TextArea.Wrap
+                }
+                Text{
+                    id: url5
+                    Layout.row: 3
+                    Layout.column: 1
+                    //Layout.columnSpan: 2
+                    visible: false
+                    font.pointSize: 16
+                    width: 30
+                    text: "URL: "
+                }
 
-//        }
+                TextArea{
+                    id: url51
+                    Layout.row: 3
+                    Layout.column: 2
+                    Layout.columnSpan: 2
+                    visible: false
+                    font.pointSize: 10
+                    wrapMode: TextArea.Wrap
 
-
-
+                }
 
     }
 

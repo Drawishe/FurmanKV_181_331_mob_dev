@@ -49,7 +49,7 @@ void HttpController::getSiteValue()
 }
 void HttpController::token(QString url){
     QString token;
-    if(url.contains("email=") || url.contains("access_token="))
+    if(url.contains("error=") || url.contains("access_token="))
     {
         if (url.contains("access_token="))
         {

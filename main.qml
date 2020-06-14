@@ -44,6 +44,10 @@ ApplicationWindow {
             id: page5
         }
 
+        Page6 {
+            id: page6
+        }
+
 
 
 
