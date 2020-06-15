@@ -8,7 +8,37 @@ import QtMultimedia 5.14
 
 Page{
     id: page3
-    header:
+    header: ToolBar{
+            anchors.top: parent.top
+            background: Rectangle{
+                implicitHeight: 60
+                implicitWidth: 100
+                color: "#30d5c8"
+            }
+            GridLayout{
+                columns: 3
+                anchors.fill:parent
+
+                Button{
+                    id: drawerb
+                    Layout.column: 0
+                    onClicked: drawer.open()
+                    font.pixelSize: 40
+                    text: "="
+                    flat: true
+                }
+
+                Label{
+                    Layout.column: 0
+                    Layout.columnSpan: 3
+                    font.pixelSize: 18
+                    text: "Lab 3. Графические эффекты"
+                    font.bold: true
+                    Layout.alignment: Qt.AlignCenter
+                }
+
+            }
+    }
         
         
         GridLayout {
@@ -19,36 +49,36 @@ Page{
         // Задание - реализовать 
         //Desaturate, RecursiveBlur, GaussianBlur
         RowLayout{
-            Layout.fillWidth: true
-            
+            Layout.fillWidth: true            
             Layout.row: 0
             Layout.column: 0
             Layout.columnSpan: 4
             
             Item{
-                Layout.fillWidth: true
-                
+                Layout.fillWidth: true                
             }
             
             RadioButton{
                 id:des
                 checked: true
                 text: "Desaturation"
+                Material.accent: Material.Teal
             }
             
             RadioButton{
                 id:rcBlur
                 text: "Recoursive Blur"
+                Material.accent: Material.Teal
             }
             
             RadioButton{
                 id:gaBlur
                 text: "Gaussian Blur"
+                Material.accent: Material.Teal
             }
             
             Item{
-                Layout.fillWidth: true
-                
+                Layout.fillWidth: true                
             }
         }
         
@@ -61,11 +91,10 @@ Page{
             Layout.columnSpan: 4
             
             Item{
-                Layout.fillWidth: true
-                
+                Layout.fillWidth: true                
             }
-            Item{
-                
+
+            Item{                
                 width: 300; height: 300
 
                 Image {
@@ -75,21 +104,17 @@ Page{
                     fillMode: Image.PreserveAspectCrop
                     smooth: true
                     visible: false
-
-                    
-                    
                 }
+
                 Desaturate{
                     anchors.fill: rick
                     source: rick
-                    desaturation: slideDesaturation.value
-                    
+                    desaturation: slideDesaturation.value                    
                 }
             }
             
             Item{
-                Layout.fillWidth: true
-                
+                Layout.fillWidth: true                
             }
         }
         
@@ -101,13 +126,11 @@ Page{
             Layout.columnSpan: 4
             
             Item{
-                Layout.fillWidth: true
-                
+                Layout.fillWidth: true                
             }
             
             Label{
-                text: "Desaturation"
-                
+                text: "Desaturation"                
             }
             
             Slider{
@@ -116,7 +139,7 @@ Page{
                 from: 0
                 value: 0
                 to:1
-                
+                Material.accent: Material.Teal
             }
             
             Item{
@@ -135,14 +158,10 @@ Page{
             Layout.columnSpan: 4
             
             Item{
-                Layout.fillWidth: true
-                
+                Layout.fillWidth: true                
             }
             Item{
-
                 width: 300; height: 300
-
-
                 
                 Image {
                     id:rick1
@@ -188,6 +207,7 @@ Page{
                 from: 0
                 value: 0
                 to:16
+                Material.accent: Material.Teal
             }
             Item{
                 Layout.fillWidth: true
@@ -215,6 +235,7 @@ Page{
                 from: 1
                 value: 0
                 to:100
+                Material.accent: Material.Teal
             }
             Item{
                 Layout.fillWidth: true
@@ -242,6 +263,7 @@ Page{
                 from: 0
                 value: 0
                 to:100
+                Material.accent: Material.Teal
             }
             
             Item{
@@ -266,6 +288,7 @@ Page{
             
             CheckBox{
                 id:blTr
+                Material.accent: Material.Teal
             }
             
             Item{
@@ -344,6 +367,7 @@ Page{
                 from: 0
                 value: 0
                 to:16
+                Material.accent: Material.Teal
             }
             
             
@@ -378,6 +402,7 @@ Page{
                 from: 1
                 value: 0
                 to:16
+                Material.accent: Material.Teal
             }
             
             
@@ -406,6 +431,7 @@ Page{
             
             CheckBox{
                 id:gausTr
+                Material.accent: Material.Teal
             }
             
             Item{
@@ -433,6 +459,7 @@ Page{
                 from:0
                 value:0
                 to:1
+                Material.accent: Material.Teal
             }
             
             Item{

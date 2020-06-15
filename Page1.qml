@@ -8,6 +8,36 @@ import QtMultimedia 5.14
 
 Page{
     id: page1
+    header: ToolBar{
+            anchors.top: parent.top
+            background: Rectangle{
+                implicitHeight: 60
+                implicitWidth: 100
+                color: "#30d5c8"
+            }
+            GridLayout{
+                columns: 3
+                anchors.fill:parent
+
+                Button{
+                    id: drawerb
+                    Layout.column: 0
+                    onClicked: drawer.open()
+                    font.pixelSize: 40
+                    text: "="
+                    flat: true
+                }
+                Label{
+                    Layout.column: 0
+                    Layout.columnSpan: 3
+                    font.pixelSize: 18
+                    text: "Lab 1. Элементы графического интерфейса"
+                    font.bold: true
+                    Layout.alignment: Qt.AlignCenter
+                }
+
+            }
+    }
     GridLayout{
         anchors.fill: parent
         columns: 4
@@ -23,7 +53,7 @@ Page{
             }
             
             BusyIndicator{
-                
+                Material.accent: Material.Teal
             }
             
             Label{
@@ -66,6 +96,7 @@ Page{
             ProgressBar{
                 value: 0.25
                 Layout.fillWidth: true
+                Material.accent: Material.Teal
             }
         }
         
@@ -118,7 +149,8 @@ Page{
                 font.pixelSize: 15
             }
             
-            Slider{                        
+            Slider{
+                Material.accent: Material.Teal
             }
             
             Item{
@@ -132,6 +164,7 @@ Page{
             }
             
             Switch{
+                Material.accent: Material.Teal
             }
             
             Item{

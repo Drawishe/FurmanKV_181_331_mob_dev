@@ -8,39 +8,69 @@ import QtMultimedia 5.14
 
 Page{
     id: page2
-    header:
+    header: ToolBar{
+            anchors.top: parent.top
+            background: Rectangle{
+                implicitHeight: 60
+                implicitWidth: 100
+                color: "#30d5c8"
+            }
+            GridLayout{
+                columns: 3
+                anchors.fill:parent
+
+                Button{
+                    id: drawerb
+                    Layout.column: 0
+                    onClicked: drawer.open()
+                    font.pixelSize: 40
+                    text: "="
+                    flat: true
+                }
+                Label{
+                    Layout.column: 0
+                    Layout.columnSpan: 3
+                    font.pixelSize: 18
+                    text: "Lab 2. Запись и воспроизведение фото и видео"
+                    font.bold: true
+                    Layout.alignment: Qt.AlignCenter
+                }
+
+            }
+    }
+    
+    GridLayout{
+        anchors.fill: parent
+        columns: 4
         RowLayout{
         Layout.fillWidth: true
         Layout.columnSpan: 4
         Layout.row: 0
         Layout.column: 0
-        
+
         Item{
             Layout.fillWidth: true
         }
-        
+
         //Кнопка включения окна воспроизведения видео
         RadioButton{
             id: video
             checked: true
             text: qsTr("Video")
+            Material.accent: Material.Teal
         }
-        
+
         //Кнопка включения окна видеокамеры
         RadioButton{
             id: cam
             text: qsTr("Camera")
+            Material.accent: Material.Teal
         }
-        
+
         Item{
             Layout.fillWidth: true
         }
     }
-    
-    
-    GridLayout{
-        anchors.fill: parent
-        columns: 4
         
         //Воспроизведение Видео
         //Медиаплеер
@@ -100,6 +130,7 @@ Page{
                 property bool sync: false
                 onValueChanged: {if(!sync){mdplayer.seek(value)}}
                 Layout.fillWidth: true
+                Material.accent: Material.Teal
             }
             
         }
@@ -129,6 +160,7 @@ Page{
                 from: 0
                 value: 0.5
                 to:1
+                Material.accent: Material.Teal
             }
             
             //Кнопка Play|Pause

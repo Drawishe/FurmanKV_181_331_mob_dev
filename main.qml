@@ -63,13 +63,16 @@ ApplicationWindow {
             anchors.fill: parent
             Button{
                 text: "Lab 1"
+                Material.foreground: "#FFFFFF"
+                font.bold: true
+                font.pixelSize: 20
                 Layout.row: 0
                 Layout.column: 0
                 Layout.columnSpan: 1
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 background: Rectangle{
-                    color: "#808080"
+                    color: "#30d5c8"
                 }
                 onClicked: {
                     swipeView.currentIndex = 0;
@@ -78,13 +81,16 @@ ApplicationWindow {
             }
             Button{
                 text: "Lab 2"
+                Material.foreground: "#FFFFFF"
+                font.bold: true
+                font.pixelSize: 20
                 Layout.row: 1
                 Layout.column: 0
                 Layout.columnSpan: 1
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 background: Rectangle{
-                    color: "#808080"
+                    color: "#30d5c8"
                 }
                 onClicked: {
                     swipeView.currentIndex = 1;
@@ -93,13 +99,16 @@ ApplicationWindow {
             }
             Button{
                 text: "Lab 3"
+                Material.foreground: "#FFFFFF"
+                font.bold: true
+                font.pixelSize: 20
                 Layout.row: 2
                 Layout.column: 0
                 Layout.columnSpan: 1
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 background: Rectangle{
-                    color: "#808080"
+                    color: "#30d5c8"
                 }
                 onClicked: {
                     swipeView.currentIndex = 2;
@@ -108,13 +117,16 @@ ApplicationWindow {
             }
             Button{
                 text: "Lab 4"
+                Material.foreground: "#FFFFFF"
+                font.bold: true
+                font.pixelSize: 20
                 Layout.row: 3
                 Layout.column: 0
                 Layout.columnSpan: 1
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 background: Rectangle{
-                    color: "#808080"
+                    color: "#30d5c8"
                 }
                 onClicked: {
                     swipeView.currentIndex = 3;
@@ -123,16 +135,37 @@ ApplicationWindow {
             }
             Button{
                 text: "Lab 5"
+                Material.foreground: "#FFFFFF"
+                font.bold: true
+                font.pixelSize: 20
                 Layout.row: 4
                 Layout.column: 0
                 Layout.columnSpan: 1
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 background: Rectangle{
-                    color: "#808080"
+                    color: "#30d5c8"
                 }
                 onClicked: {
                     swipeView.currentIndex = 4;
+                    drawer.close();
+                }
+            }
+            Button{
+                text: "Lab 6"
+                Material.foreground: "#FFFFFF"
+                font.bold: true
+                font.pixelSize: 20
+                Layout.row: 4
+                Layout.column: 0
+                Layout.columnSpan: 1
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                background: Rectangle{
+                    color: "#30d5c8"
+                }
+                onClicked: {
+                    swipeView.currentIndex = 5;
                     drawer.close();
                 }
             }

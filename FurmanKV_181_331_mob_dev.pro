@@ -24,6 +24,7 @@ LIBS += C:\Qt\Tools\OpenSSL\Win_x64\lib\libcrypto.lib
 
 SOURCES += \
         httpcontroller.cpp \
+        mailmodel.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -40,4 +41,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    httpcontroller.h
+    httpcontroller.h \
+    mailmodel.h

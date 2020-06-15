@@ -16,7 +16,37 @@ Page{
        }
 
     id: page4
-    header:
+    header: ToolBar{
+            anchors.top: parent.top
+            background: Rectangle{
+                implicitHeight: 60
+                implicitWidth: 100
+                color: "#30d5c8"
+            }
+            GridLayout{
+                columns: 3
+                anchors.fill:parent
+
+                Button{
+                    id: drawerb
+                    Layout.column: 0
+                    onClicked: drawer.open()
+                    font.pixelSize: 40
+                    text: "="
+                    flat: true
+                }
+                Label{
+                    Layout.column: 0
+                    Layout.columnSpan: 3
+                    font.pixelSize: 18
+                    text: "Lab 4. Запросы к серверу по протоколу HTTP"
+                    font.bold: true
+                    Layout.alignment: Qt.AlignCenter
+                }
+
+            }
+    }
+
         
         
         GridLayout {        
@@ -48,6 +78,8 @@ Page{
                 Layout.column: 0
                 Layout.columnSpan: 2
                 text: "Вывод"
+                Material.foreground: "#FFFFFF"
+                Material.background: Material.Teal
                 //Layout.fillWidth: true
                 id: btnHttps
                 onClicked: {
