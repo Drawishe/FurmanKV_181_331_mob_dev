@@ -10,5 +10,11 @@
         <file>Page1.qml</file>
         <file>Page5.qml</file>
         <file>Page6.qml</file>
+        <file>Page7.qml</file>
+        <file>Page8.qml</file>
+        <file>Page9.qml</file>
+        <file>send.png</file>
+        <file>in_ballon.png</file>
+        <file>out_ballon.png</file>
     </qresource>
 </RCC>

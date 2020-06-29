@@ -48,6 +48,7 @@ Page{
             access5.visible = true
             accesst5.visible = true
             accesst51.visible = true
+            reqb.visible = true
             url51.text = str1;            
             accesst51.text = str2;
             webv.visible = false;
@@ -73,19 +74,19 @@ Page{
     GridLayout{
         anchors.fill:parent
         columns:5
-        rows:5
+        rows:6
 
             Rectangle{
-                Layout.row: 0
-                Layout.rowSpan: 2
+                Layout.row: 1
+                Layout.rowSpan: 4
                 Layout.column: 0
                 Layout.columnSpan: 4
-
+                Layout.fillHeight: true
+                Layout.fillWidth: true
                 id: rectgweb
                 color: "#FFFFFF"
                 visible: false
-                Layout.fillHeight: true
-                Layout.fillWidth: true
+
 
 
                 WebView{
@@ -170,12 +171,12 @@ Page{
             Rectangle{
                 id: rectg15
                 border.color: "#009688"
-                border.width: parent.width * 0.02
+                border.width: parent.width * 0.015
                 visible: false
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 Layout.row: 1
-                Layout.rowSpan: 4
+                Layout.rowSpan: 5
                 Layout.column: 1
                 Layout.columnSpan: 4
             }
@@ -228,10 +229,29 @@ Page{
                 wrapMode: Text.WrapAnywhere
                 Layout.fillWidth: true
             }
+            Button{
+                id: reqb
+                Layout.row: 5
+                Layout.column: 0
+                Layout.columnSpan: 5
+                Layout.leftMargin: 15
+                Layout.alignment: Qt.AlignHCenter
+                Layout.bottomMargin: 15
+                visible: false
+                text: qsTr("Отправить запрос")
+                Material.foreground: "#FFFFFF"
+                Material.background: Material.Teal
+                onClicked: {
+                    apirequest();
+                    db_write();
+                    db_read();
+                }
+
+            }
 
             TextArea{
                 Layout.fillWidth: true
-                Layout.row: 4
+                Layout.row: 5
                 Layout.column: 0
                 Layout.columnSpan: 4
                 id: debug

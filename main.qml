@@ -8,6 +8,9 @@ import QtMultimedia 5.14
 
 ApplicationWindow {
     signal makeRequest()
+    signal apirequest();
+    signal db_read();
+    signal db_write();
     visible: true
     width: 640
     height: 848
@@ -47,6 +50,19 @@ ApplicationWindow {
         Page6 {
             id: page6
         }
+
+        Page7 {
+            id: page7
+        }
+
+        Page8 {
+            id: page8
+        }
+
+        Page9 {
+            id: page9
+        }
+
 
 
 
@@ -166,6 +182,60 @@ ApplicationWindow {
                 }
                 onClicked: {
                     swipeView.currentIndex = 5;
+                    drawer.close();
+                }
+            }
+            Button{
+                text: "Lab 7"
+                Material.foreground: "#FFFFFF"
+                font.bold: true
+                font.pixelSize: 20
+                Layout.row: 5
+                Layout.column: 0
+                Layout.columnSpan: 1
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                background: Rectangle{
+                    color: "#30d5c8"
+                }
+                onClicked: {
+                    swipeView.currentIndex = 6;
+                    drawer.close();
+                }
+            }
+            Button{
+                text: "Lab 9"
+                Material.foreground: "#FFFFFF"
+                font.bold: true
+                font.pixelSize: 20
+                Layout.row: 6
+                Layout.column: 0
+                Layout.columnSpan: 1
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                background: Rectangle{
+                    color: "#30d5c8"
+                }
+                onClicked: {
+                    swipeView.currentIndex = 7;
+                    drawer.close();
+                }
+            }
+            Button{
+                text: "Lab 10"
+                Material.foreground: "#FFFFFF"
+                font.bold: true
+                font.pixelSize: 20
+                Layout.row: 7
+                Layout.column: 0
+                Layout.columnSpan: 1
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                background: Rectangle{
+                    color: "#30d5c8"
+                }
+                onClicked: {
+                    swipeView.currentIndex = 8;
                     drawer.close();
                 }
             }

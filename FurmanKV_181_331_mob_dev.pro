@@ -1,5 +1,7 @@
 QT += quick
 QT += network
+QT += sql
+QT += charts
 
 CONFIG += c++11
 
@@ -8,12 +10,15 @@ CONFIG += c++11
 # depend on your compiler). Refer to the documentation for the
 # deprecated API to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
-DEPENDPATH += C:\Qt\Tools\OpenSSL\Win_x64\include
-INCLUDEPATH += C:\Qt\Tools\OpenSSL\Win_x64\include
+#DEPENDPATH += C:\Qt\Tools\OpenSSL\Win_x64\include
+#INCLUDEPATH += C:\Qt\Tools\OpenSSL\Win_x64\include
 
-win32 {
-LIBS += C:\Qt\Tools\OpenSSL\Win_x64\lib\libcrypto.lib
-}
+#win32 {
+#LIBS += C:\Qt\Tools\OpenSSL\Win_x64\lib\libcrypto.lib
+#}
+# подключение библиотек для WIN
+INCLUDEPATH += C:\OpenSSL-Win64\include
+LIBS +=  -LC:\OpenSSL-Win64\lib\ -llibeay32 -lssleay32 -lubsec
 #else: android{
 #LIBS += C:\Qt\Tools\OpenSSL\android_openssl\static\lib\libcrypto.a
 #}
@@ -23,6 +28,7 @@ LIBS += C:\Qt\Tools\OpenSSL\Win_x64\lib\libcrypto.lib
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        cryptocontroller.cpp \
         httpcontroller.cpp \
         mailmodel.cpp \
         main.cpp
@@ -41,5 +47,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    cryptocontroller.h \
     httpcontroller.h \
     mailmodel.h
+
+DISTFILES +=
